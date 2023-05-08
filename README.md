@@ -2,3 +2,9 @@ A blog website that allows users to create posts, and comment on posts. Uses jwt
 Technologies:
     - Back-end - Java JAX-RS Jersey Jakarta EE 8, Tomcat 9.0.73, servlet, postgresql.
     - Front-end - Vue.js 3.
+
+![](blog-1.png)
+
+![](blog-2.png)
+
+![](blog-3.png)
