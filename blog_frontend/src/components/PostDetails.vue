@@ -6,6 +6,7 @@
         <h3>{{ this.getPost.author }}</h3>
         <p>{{ this.getPost.content }}</p>
         <br/>
+        <br/>
         <Comments :postId = "this.getPost.id"/>
       </div>
     </div>
