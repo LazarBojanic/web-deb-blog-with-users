@@ -1,7 +1,7 @@
-package rs.raf.domaci5lazarbojanic11621rn.service;
+package rs.raf.domaci6lazarbojanic11621rn.service;
 
-import rs.raf.domaci5lazarbojanic11621rn.model.BlogPost;
-import rs.raf.domaci5lazarbojanic11621rn.repository.specification.IBlogPostRepository;
+import rs.raf.domaci6lazarbojanic11621rn.model.BlogPost;
+import rs.raf.domaci6lazarbojanic11621rn.repository.specification.IBlogPostRepository;
 
 import javax.inject.Inject;
 import java.util.List;

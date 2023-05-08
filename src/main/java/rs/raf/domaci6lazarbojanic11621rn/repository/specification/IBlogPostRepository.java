@@ -1,6 +1,6 @@
-package rs.raf.domaci5lazarbojanic11621rn.repository.specification;
+package rs.raf.domaci6lazarbojanic11621rn.repository.specification;
 
-import rs.raf.domaci5lazarbojanic11621rn.model.BlogPost;
+import rs.raf.domaci6lazarbojanic11621rn.model.BlogPost;
 
 import java.util.List;
 

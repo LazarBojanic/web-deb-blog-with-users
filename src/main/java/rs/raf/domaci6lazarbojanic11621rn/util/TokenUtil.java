@@ -14,16 +14,8 @@ import java.util.Properties;
 
 public class TokenUtil {
 
-    private static String jwtSecret = "";
-    static {
-        Properties props = new Properties();
-        try (InputStream in = TokenUtil.class.getResourceAsStream("/config.properties")) {
-            props.load(in);
-            jwtSecret = props.getProperty("jwtSecret");
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read config.properties", e);
-        }
-    }
+    private static String jwtSecret = "NQu2mzEtCwrNaJCjsoHT";
+
     public static String MASTER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3MiOiJhZG1pbiJ9.EcbsD0Wn1wkI8iVVTEOX0IWHuwyqOndzPUFtDAM4TMI";
     public static String generate(ServiceUser serviceUser) {
         Claims claims = Jwts.claims();

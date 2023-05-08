@@ -1,4 +1,4 @@
-package rs.raf.domaci5lazarbojanic11621rn.model;
+package rs.raf.domaci6lazarbojanic11621rn.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;

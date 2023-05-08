@@ -9,11 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class ServiceUser {
-    @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("username")
-    private String username;
-    @JsonProperty("pass")
-    private String pass;
+public class Token {
+    @JsonProperty("token")
+    private String token;
 }
