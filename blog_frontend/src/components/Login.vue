@@ -53,6 +53,7 @@ export default {
       if (data.token) {
         console.log(data.token);
         Cookies.set('token', data.token);
+        this.$emit('loginSuccess', data.token);
         this.$router.push({ name: 'home' });
       }
     },

@@ -6,8 +6,7 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
-
-          <li class="nav-item">
+          <li v-if="!token" class="nav-item">
             <router-link class="nav-link" to="/register">Register</router-link>
           </li>
 
@@ -23,7 +22,7 @@
       </div>
     </nav>
     <body>
-      <router-view/>
+      <router-view @loginSuccess="updateToken" />
     </body>
   </div>
 </template>
@@ -43,7 +42,16 @@ export default {
     methods:{
       logoutButton(){
         Cookies.remove('token');
+        this.token = Cookies.get('token');
         router.push({name: 'login'});
+      },
+      updateToken(token) {
+        this.token = token;
+      }
+    },
+    watch: {
+      token(newToken) {
+        this.token = newToken;
       }
     }
 }

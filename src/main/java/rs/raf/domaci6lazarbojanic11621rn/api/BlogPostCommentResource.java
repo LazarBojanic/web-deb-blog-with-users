@@ -1,15 +1,12 @@
 package rs.raf.domaci6lazarbojanic11621rn.api;
 
-import rs.raf.domaci6lazarbojanic11621rn.model.BlogPost;
 import rs.raf.domaci6lazarbojanic11621rn.model.BlogPostComment;
 import rs.raf.domaci6lazarbojanic11621rn.service.BlogPostCommentService;
-import rs.raf.domaci6lazarbojanic11621rn.util.TokenUtil;
+import rs.raf.domaci6lazarbojanic11621rn.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-import java.net.URI;
 import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -22,17 +19,11 @@ public class BlogPostCommentResource {
     @Path("/get/{blogPostId}")
     @Produces(APPLICATION_JSON)
     public Response getBlogPostCommentById(@PathParam("blogPostId") Integer blogPostId, @HeaderParam("authorization") String bearerToken){
-        String token = bearerToken.split(" ")[1];
-        if(TokenUtil.parseToken(token) != null){
+        try{
             BlogPostComment blogPostComment = blogPostCommentService.getBlogPostCommentById(blogPostId);
-            if(blogPostComment != null){
-                return Response.ok().entity(blogPostComment).build();
-            }
-            else{
-                return Response.status(500).build();
-            }
+            return Response.ok().entity(blogPostComment).build();
         }
-        else{
+        catch(Exception e){
             return Response.status(500).build();
         }
     }
@@ -40,17 +31,11 @@ public class BlogPostCommentResource {
     @Path("/getAll/{blogPostId}")
     @Produces(APPLICATION_JSON)
     public Response getAllBlogPostCommentsByPostId(@PathParam("blogPostId") Integer blogPostId, @HeaderParam("authorization") String bearerToken){
-        String token = bearerToken.split(" ")[1];
-        if(TokenUtil.parseToken(token) != null){
+        try{
             List<BlogPostComment> blogPostCommentList = blogPostCommentService.getAllBlogPostCommentsByPostId(blogPostId);
-            if(blogPostCommentList != null){
-                return Response.ok().entity(blogPostCommentList).build();
-            }
-            else{
-                return Response.status(500).build();
-            }
+            return Response.ok().entity(blogPostCommentList).build();
         }
-        else{
+        catch(Exception e){
             return Response.status(500).build();
         }
     }
@@ -59,18 +44,11 @@ public class BlogPostCommentResource {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     public Response addBlogPostComment(@PathParam("blogPostId") Integer blogPostId, BlogPostComment blogPostComment, @HeaderParam("authorization") String bearerToken){
-        String token = bearerToken.split(" ")[1];
-        if(TokenUtil.parseToken(token) != null){
-            System.out.println(blogPostComment);
+        try{
             BlogPostComment BlogPostCommentWithId = blogPostCommentService.addBlogPostComment(blogPostId, blogPostComment);
-            if(BlogPostCommentWithId != null){
-                return Response.ok().entity(BlogPostCommentWithId).build();
-            }
-            else{
-                return Response.status(500).build();
-            }
+            return Response.ok().entity(BlogPostCommentWithId).build();
         }
-        else{
+        catch(Exception e){
             return Response.status(500).build();
         }
     }
@@ -78,8 +56,7 @@ public class BlogPostCommentResource {
     @Path("/delete/{id}")
     @Produces(APPLICATION_JSON)
     public Response deleteBlogPost(@PathParam("id") Integer id, @HeaderParam("authorization") String bearerToken){
-        String token = bearerToken.split(" ")[1];
-        if(TokenUtil.parseToken(token) != null){
+        try{
             boolean isDeleted = blogPostCommentService.deleteBlogPostCommentById(id);
             if(isDeleted){
                 return Response.ok().entity(id).build();
@@ -88,7 +65,7 @@ public class BlogPostCommentResource {
                 return Response.status(500).build();
             }
         }
-        else{
+        catch(Exception e){
             return Response.status(500).build();
         }
     }

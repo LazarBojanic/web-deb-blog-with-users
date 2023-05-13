@@ -1,18 +1,20 @@
 package rs.raf.domaci6lazarbojanic11621rn.repository.implementation;
 
 import rs.raf.domaci6lazarbojanic11621rn.database.BlogDatabase;
-import rs.raf.domaci6lazarbojanic11621rn.model.BlogPost;
 import rs.raf.domaci6lazarbojanic11621rn.model.ServiceUser;
 import rs.raf.domaci6lazarbojanic11621rn.model.Token;
 import rs.raf.domaci6lazarbojanic11621rn.repository.specification.IServiceUserRepository;
 import rs.raf.domaci6lazarbojanic11621rn.util.Hasher;
-import rs.raf.domaci6lazarbojanic11621rn.util.TokenUtil;
+import rs.raf.domaci6lazarbojanic11621rn.service.TokenService;
 
+import javax.inject.Inject;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceUserRepository implements IServiceUserRepository {
+    @Inject
+    TokenService tokenService;
     @Override
     public List<ServiceUser> getAllServiceUsers() {
         List<ServiceUser> serviceUserList = new ArrayList<>();
@@ -131,7 +133,7 @@ public class ServiceUserRepository implements IServiceUserRepository {
                     if(Hasher.checkPassword(serviceUser.getPass(), hashedPass)){
                         serviceUser.setId(id);
                         serviceUser.setPass(hashedPass);
-                        return new Token(TokenUtil.generate(serviceUser));
+                        return new Token(tokenService.generate(serviceUser));
                     }
                     else{
                         return null;
