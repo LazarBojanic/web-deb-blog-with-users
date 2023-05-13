@@ -9,8 +9,11 @@ import java.util.List;
 public interface IServiceUserRepository {
     List<ServiceUser> getAllServiceUsers();
     ServiceUser getServiceUserById(Integer id);
+    ServiceUser getServiceUserByUsername(String username);
     ServiceUser addServiceUser(ServiceUser serviceUser);
     ServiceUser registerServiceUser(ServiceUser serviceUser);
     Token loginServiceUser(ServiceUser serviceUser);
     boolean deleteServiceUserById(Integer id);
+    String generateToken(ServiceUser serviceUser);
+    ServiceUser parseToken(String jwt);
 }

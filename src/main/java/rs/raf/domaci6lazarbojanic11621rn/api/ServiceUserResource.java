@@ -3,7 +3,6 @@ package rs.raf.domaci6lazarbojanic11621rn.api;
 import rs.raf.domaci6lazarbojanic11621rn.model.ServiceUser;
 import rs.raf.domaci6lazarbojanic11621rn.model.Token;
 import rs.raf.domaci6lazarbojanic11621rn.service.ServiceUserService;
-import rs.raf.domaci6lazarbojanic11621rn.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

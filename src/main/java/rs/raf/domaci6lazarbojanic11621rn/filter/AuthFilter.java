@@ -3,7 +3,6 @@ package rs.raf.domaci6lazarbojanic11621rn.filter;
 import rs.raf.domaci6lazarbojanic11621rn.api.BlogPostCommentResource;
 import rs.raf.domaci6lazarbojanic11621rn.api.BlogPostResource;
 import rs.raf.domaci6lazarbojanic11621rn.service.ServiceUserService;
-import rs.raf.domaci6lazarbojanic11621rn.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -16,7 +15,7 @@ import javax.ws.rs.ext.Provider;
 public class AuthFilter implements ContainerRequestFilter {
 
     @Inject
-    TokenService tokenService;
+    ServiceUserService serviceUserService;
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         try{
@@ -24,7 +23,7 @@ public class AuthFilter implements ContainerRequestFilter {
                 String bearerToken = requestContext.getHeaderString("authorization");
                 if(bearerToken.startsWith("Bearer")){
                     String token = bearerToken.split(" ")[1];
-                    if (this.tokenService.parseToken(token) == null) {
+                    if (this.serviceUserService.parseToken(token) == null) {
                         System.out.println("unauthorized");
                         requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
                     }

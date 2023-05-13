@@ -21,6 +21,9 @@ public class ServiceUserService {
     public ServiceUser getServiceUserById(Integer serviceUserId) {
         return this.serviceUserRepository.getServiceUserById(serviceUserId);
     }
+    public ServiceUser getServiceUserByUsername(String username) {
+        return this.serviceUserRepository.getServiceUserByUsername(username);
+    }
     public ServiceUser addServiceUser(ServiceUser serviceUser) {
         return this.serviceUserRepository.addServiceUser(serviceUser);
     }
@@ -32,5 +35,12 @@ public class ServiceUserService {
     }
     public boolean deleteServiceUserById(Integer id) {
         return this.serviceUserRepository.deleteServiceUserById(id);
+    }
+    public String generateToken(ServiceUser serviceUser){
+        return this.serviceUserRepository.generateToken(serviceUser);
+    }
+
+    public ServiceUser parseToken(String jwt){
+        return this.serviceUserRepository.parseToken(jwt);
     }
 }

@@ -2,7 +2,6 @@ package rs.raf.domaci6lazarbojanic11621rn.api;
 
 import rs.raf.domaci6lazarbojanic11621rn.model.BlogPostComment;
 import rs.raf.domaci6lazarbojanic11621rn.service.BlogPostCommentService;
-import rs.raf.domaci6lazarbojanic11621rn.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
